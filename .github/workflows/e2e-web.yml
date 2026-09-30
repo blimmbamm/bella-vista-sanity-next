@@ -1,18 +1,12 @@
 name: E2E Web
 
+# Always run so required status checks get a result. Tests only run when
+# web/, e2e/, or this workflow changed; otherwise the job exits green early.
 on:
   push:
     branches: [main]
-    paths:
-      - 'web/**'
-      - 'e2e/**'
-      - '.github/workflows/e2e-web.yml'
   pull_request:
     branches: [main]
-    paths:
-      - 'web/**'
-      - 'e2e/**'
-      - '.github/workflows/e2e-web.yml'
 
 jobs:
   e2e:
@@ -28,7 +22,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Detect relevant changes
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            e2e:
+              - 'web/**'
+              - 'e2e/**'
+              - '.github/workflows/e2e-web.yml'
+
+      - name: Skip notice
+        if: steps.filter.outputs.e2e != 'true'
+        run: echo 'No changes in web/, e2e/, or this workflow — skipping tests.'
+
       - name: Setup Node
+        if: steps.filter.outputs.e2e == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -38,23 +47,27 @@ jobs:
             e2e/package-lock.json
 
       - name: Install web dependencies
+        if: steps.filter.outputs.e2e == 'true'
         working-directory: web
         run: npm ci
 
       - name: Install e2e dependencies
+        if: steps.filter.outputs.e2e == 'true'
         working-directory: e2e
         run: npm ci
 
       - name: Install Playwright Chromium
+        if: steps.filter.outputs.e2e == 'true'
         working-directory: e2e
         run: npx playwright install --with-deps chromium
 
       - name: Run E2E tests
+        if: steps.filter.outputs.e2e == 'true'
         working-directory: e2e
         run: npm test
 
       - name: Upload Playwright report
-        if: failure()
+        if: failure() && steps.filter.outputs.e2e == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report

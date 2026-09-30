@@ -67,6 +67,6 @@ Details live in the package READMEs and in `docs/src/project.config.ts` (URLs, c
 cd e2e && npm install && npx playwright install chromium && npm test
 ```
 
-GitHub Actions runs the same suite on pushes and PRs that touch `web/`, `e2e/`, or the workflow (see [`.github/workflows/e2e-web.yml`](.github/workflows/e2e-web.yml)).
+GitHub Actions runs on every push/PR to `main` (required checks always report). Tests run only when `web/`, `e2e/`, or the workflow changed; otherwise the job exits green without Playwright (see [`.github/workflows/e2e-web.yml`](.github/workflows/e2e-web.yml)).
 
 Docs screenshots are separate and manual: `cd docs && npm run screenshots` (see [`docs/README.md`](docs/README.md)).
