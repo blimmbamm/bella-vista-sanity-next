@@ -22,4 +22,4 @@ If `web` is already running on port 3000 locally, Playwright reuses that server 
 
 ## CI
 
-GitHub Actions runs these tests on pushes and pull requests that touch `web/`, `e2e/`, or the workflow file. See `.github/workflows/e2e-web.yml`.
+GitHub Actions runs on every push/PR to `main` so required status checks always get a result. The Playwright suite only runs when `web/`, `e2e/`, or the workflow file changed; otherwise the job succeeds immediately. See `.github/workflows/e2e-web.yml`.
