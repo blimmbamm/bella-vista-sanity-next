@@ -1,0 +1,67 @@
+---
+title: Öffnungszeiten
+description: Reguläre Öffnungszeiten, Mittagspausen, Feiertage und Urlaub eintragen.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+import Screenshot from '~/components/Screenshot.astro';
+
+Die Öffnungszeiten pflegst du an einer einzigen Stelle: **Opening hours** in der Inhaltsliste. Sie erscheinen überall, wo auf einer Seite der Abschnitt **Opening hours** eingebunden ist, auf Deutsch und Englisch.
+
+<Screenshot name="studio-oeffnungszeiten" alt="Öffnungszeiten im Content Studio" />
+
+## Reguläre Öffnungszeiten
+
+Unter **Regular opening hours** steht pro Wochentag ein Eintrag.
+
+<Steps>
+
+1. Klick auf einen Wochentag, um ihn zu öffnen.
+
+2. Trage unter **Time slots** die Zeiten ein, zum Beispiel **Opens** `11:30` und **Closes** `22:00`. Verwende immer das Format `HH:MM`.
+
+3. Für eine **Mittagspause** fügst du einen zweiten Zeitraum hinzu, zum Beispiel `11:30–14:30` und `17:30–22:00`.
+
+4. Ist an diesem Tag Ruhetag, schalte **Closed** ein. Die Zeiten verschwinden dann.
+
+5. **Publish** und [Deploy now](/veroeffentlichen/website-aktualisieren/).
+
+</Steps>
+
+<Aside type="tip">
+	Geöffnet bis nach Mitternacht? Trage als Schließzeit `24:00` oder die Uhrzeit am nächsten Morgen ein, zum Beispiel `01:00`.
+</Aside>
+
+Jeder Wochentag darf nur einmal vorkommen. Ein Wochentag, der fehlt, wird auf der Website als geschlossen angezeigt. Aufeinanderfolgende Tage mit gleichen Zeiten fasst die Website automatisch zusammen, zum Beispiel „Di – Do“.
+
+## Ausnahmen: Feiertage und Urlaub
+
+Unter **Exceptions** trägst du Tage mit abweichenden Zeiten ein.
+
+<Steps>
+
+1. Klick unter **Exceptions** auf **Add item**.
+
+2. Wähle das **Date** (Datum).
+
+3. Gib unter **Label** einen Namen ein, zum Beispiel „Heiligabend“ und „Christmas Eve“.
+
+4. Standardmäßig ist **Closed** eingeschaltet. Hast du an dem Tag mit anderen Zeiten geöffnet, schalte **Closed** aus und trage die Zeiten ein.
+
+5. **Publish** und [Deploy now](/veroeffentlichen/website-aktualisieren/).
+
+</Steps>
+
+Für einen **Betriebsurlaub** legst du pro Tag eine Ausnahme an. Alternativ kannst du den Urlaub als Text im Feld **Note** ankündigen, zum Beispiel „Vom 1. bis 14. August machen wir Urlaub.“
+
+<Aside type="note" title="Vergangene Ausnahmen">
+	Auf der Website erscheinen nur Ausnahmen ab dem Tag des letzten Deploys. Vergangene Einträge verschwinden beim nächsten Deploy von selbst. Du kannst sie im Content Studio stehen lassen oder löschen.
+</Aside>
+
+## Hinweis unter den Öffnungszeiten
+
+Im Feld **Note** kannst du einen kurzen Text eintragen, der unter den Öffnungszeiten erscheint, zum Beispiel „Küche bis 21:30 Uhr“. Deutsch und Englisch getrennt.
+
+## So sieht es auf der Website aus
+
+<Screenshot name="web-oeffnungszeiten" alt="Öffnungszeiten auf der Website" />

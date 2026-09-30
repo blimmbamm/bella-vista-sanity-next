@@ -1,0 +1,86 @@
+:root {
+  --color-bg: #faf6ef;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f3ece1;
+  --color-ink: #2b2320;
+  --color-ink-muted: #6f6259;
+  --color-line: #e6dccd;
+  --color-accent: #b5452b;
+  --color-accent-strong: #933520;
+  --color-olive: #4f5d3a;
+  --color-dark: #1f2a1d;
+
+  --font-body: var(--font-nunito), system-ui, sans-serif;
+  --font-heading: var(--font-playfair), Georgia, serif;
+
+  --header-height: 4.25rem;
+  --radius: 0.75rem;
+  --shadow-soft: 0 1px 2px rgb(43 35 32 / 6%), 0 8px 24px rgb(43 35 32 / 6%);
+  --container: 72rem;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 1rem);
+  scrollbar-gutter: stable;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  flex: 1;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,41 @@
+---
+title: So funktioniert deine Website
+description: Wie Content Studio, Website und Veröffentlichen zusammenhängen.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+import Screenshot from '~/components/Screenshot.astro';
+import { project } from '~/project.config';
+
+Deine Website besteht aus zwei Teilen:
+
+- **Content Studio** ({project.studioUrl}): Hier pflegst du alle Inhalte, also Texte, Bilder, Speisekarte, Öffnungszeiten und Kontaktdaten. Das Content Studio basiert auf dem Dienst [Sanity](https://www.sanity.io).
+- **Website** ({project.siteUrl}): Das ist die Seite, die deine Gäste sehen. Aussehen und Aufbau hat {project.developer.name} für dich entwickelt.
+
+<Screenshot name="web-startseite" alt="Startseite der Restaurant-Website" caption="Die Website, wie deine Gäste sie sehen" />
+
+## Der Weg einer Änderung
+
+<Steps>
+
+1. Du änderst im Content Studio einen Inhalt, zum Beispiel den Preis eines Gerichts. Solange du nicht veröffentlichst, ist das ein **Entwurf**, den nur du siehst.
+
+2. Du klickst auf **Publish**. Die Änderung ist jetzt gespeichert und freigegeben, aber noch nicht auf der Website.
+
+3. Du klickst im Bereich **Deploy Website** auf **Deploy now**. Die Website wird mit allen freigegebenen Inhalten neu erstellt. Das dauert etwa {project.deployDuration}.
+
+4. Danach ist die Änderung für alle Gäste sichtbar.
+
+</Steps>
+
+<Aside type="caution" title="Wichtig">
+	Veröffentlichen (Publish) allein reicht nicht. Erst mit **Deploy now** landen deine Änderungen auf der Website. Du kannst aber mehrere Änderungen sammeln und dann einmal deployen.
+</Aside>
+
+## Warum zwei Schritte?
+
+Die Website wird nicht bei jedem Aufruf neu zusammengebaut, sondern einmal fertig erstellt und dann ausgeliefert. Dadurch lädt sie sehr schnell und ist sicher. Der Nachteil: Änderungen erscheinen erst, wenn die Website neu erstellt wird. Genau das macht der Deploy-Knopf.
+
+## Deutsch und Englisch
+
+Die Website gibt es auf Deutsch und Englisch. Manche Inhalte pflegst du für beide Sprachen getrennt (Seiten und Navigation), andere nur einmal, mit Feldern für beide Sprachen (Speisekarte, Öffnungszeiten, Kontaktdaten). Mehr dazu unter [Übersetzungen](/inhalte/uebersetzungen/).

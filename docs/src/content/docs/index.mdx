@@ -1,0 +1,40 @@
+---
+title: Deine Website selbst pflegen
+description: Anleitung für die Pflege der Restaurant-Website mit Sanity.
+template: splash
+hero:
+  tagline: Speisekarte, Öffnungszeiten, Texte und Bilder änderst du selbst im Content Studio. Hier steht, wie das geht.
+  actions:
+    - text: Los geht's
+      link: /einstieg/ueberblick/
+      icon: right-arrow
+---
+
+import { Card, CardGrid, LinkButton, LinkCard } from '@astrojs/starlight/components';
+import { project } from '~/project.config';
+
+<LinkButton href={project.studioUrl} variant="secondary" icon="external">
+	Content Studio öffnen
+</LinkButton>
+
+<CardGrid>
+	<Card title="Speisekarte ändern" icon="list-format">
+		Gerichte, Preise und Kategorien anpassen oder Gerichte vorübergehend ausblenden.
+	</Card>
+	<Card title="Öffnungszeiten" icon="seti:clock">
+		Reguläre Zeiten, Feiertage und Betriebsurlaub eintragen.
+	</Card>
+	<Card title="Texte und Bilder" icon="pencil">
+		Seiten und Abschnitte auf Deutsch und Englisch bearbeiten.
+	</Card>
+	<Card title="Veröffentlichen" icon="rocket">
+		Mit einem Klick die Website mit deinen Änderungen neu erstellen.
+	</Card>
+</CardGrid>
+
+## Häufige Aufgaben
+
+<LinkCard title="Ein Gericht hinzufügen oder ändern" href="/inhalte/speisekarte/" />
+<LinkCard title="Feiertag oder Urlaub eintragen" href="/inhalte/oeffnungszeiten/#ausnahmen-feiertage-und-urlaub" />
+<LinkCard title="Änderungen auf der Website sichtbar machen" href="/veroeffentlichen/website-aktualisieren/" />
+<LinkCard title={`Was mache ich selbst, was macht ${project.developer.name}?`} href="/zusammenarbeit/zustaendigkeiten/" />

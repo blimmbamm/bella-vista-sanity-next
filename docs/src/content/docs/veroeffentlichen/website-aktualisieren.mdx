@@ -1,0 +1,43 @@
+---
+title: Website aktualisieren (Deploy)
+description: So bringst du veröffentlichte Änderungen auf die Website.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+import Screenshot from '~/components/Screenshot.astro';
+import { project } from '~/project.config';
+
+Damit deine veröffentlichten Änderungen auf der Website erscheinen, muss die Website neu erstellt werden. Das nennt man **Deploy**.
+
+<Steps>
+
+1. Veröffentliche alle Änderungen mit **Publish**. Nur veröffentlichte Inhalte kommen auf die Website, Entwürfe nicht.
+
+2. Klick oben im Content Studio auf **Deploy Website**.
+
+3. Klick auf **Deploy now**.
+
+   <Screenshot name="studio-deploy" alt="Bereich Deploy Website im Content Studio" />
+
+4. Es erscheint „Deployment triggered successfully“. Die Website wird jetzt im Hintergrund neu erstellt. Das dauert etwa {project.deployDuration}.
+
+5. Öffne danach die Website (<a href={project.siteUrl}>{project.siteUrl}</a>) und prüfe deine Änderung. Falls du noch die alte Version siehst, lade die Seite neu (am Computer mit Strg + F5, auf dem Handy durch Herunterziehen).
+
+</Steps>
+
+<Aside type="tip" title="Änderungen sammeln">
+	Du musst nicht nach jeder kleinen Änderung deployen. Sammle mehrere Änderungen, veröffentliche sie und klick am Ende einmal auf **Deploy now**.
+</Aside>
+
+## Fortschritt verfolgen
+
+Nach dem Klick erscheint der Link **View progress on Vercel**. Dort siehst du, ob die Website gerade erstellt wird (Building), fertig ist (Ready) oder ein Fehler aufgetreten ist (Error). Du brauchst dafür einen Zugang, den {project.developer.name} dir bei Bedarf einrichtet. Nötig ist das aber nicht: Nach ein paar Minuten ist die Website normalerweise einfach aktuell.
+
+## Wenn etwas schiefgeht
+
+- **„Failed to trigger deployment“**: Der Deploy konnte nicht gestartet werden. Versuch es nach ein paar Minuten noch einmal. Klappt es weiterhin nicht, melde dich bei {project.developer.name}.
+- **Nach zehn Minuten immer noch die alte Version**: Siehe [Probleme lösen](/hilfe/probleme/#meine-änderung-ist-nicht-auf-der-website).
+
+<Aside type="note">
+	Schlägt ein Deploy fehl, bleibt die bisherige Version der Website online. Deine Gäste sehen also nie eine kaputte Seite.
+</Aside>

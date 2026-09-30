@@ -1,0 +1,29 @@
+.callout {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  border-radius: var(--radius);
+  background: var(--color-dark);
+  color: #f5efe4;
+  box-shadow: var(--shadow-soft);
+}
+
+.callout::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 6px;
+  background: linear-gradient(to bottom, #3f7d3a 0 33%, #f5efe4 33% 66%, var(--color-accent) 66%);
+}
+
+.title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.4rem, 3.5vw, 1.75rem);
+  color: #fff;
+}
+
+.body {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgb(245 239 228 / 88%);
+}

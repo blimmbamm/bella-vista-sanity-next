@@ -1,0 +1,65 @@
+---
+title: Abschnitte einer Seite
+description: Welche Abschnitte es gibt und wie du sie hinzufügst, sortierst und bearbeitest.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+import Screenshot from '~/components/Screenshot.astro';
+
+Jede Seite besteht aus Abschnitten (**Sections**), die untereinander angezeigt werden. Du entscheidest, welche Abschnitte eine Seite hat und in welcher Reihenfolge.
+
+## Die Abschnittsarten
+
+| Abschnitt | Wofür | Inhalt kommt aus |
+| --- | --- | --- |
+| **Text section** | Fließtext mit Zwischenüberschriften, Links und Bildern | dem Abschnitt selbst |
+| **Callout section** | Hervorgehobener Kasten, zum Beispiel für ein Angebot oder einen Hinweis | dem Abschnitt selbst |
+| **Menu** | Die Speisekarte, ganz oder nur ausgewählte Kategorien | [Speisekarte](/inhalte/speisekarte/) |
+| **Opening hours** | Die Öffnungszeiten, optional mit Feiertagen und Urlaub | [Öffnungszeiten](/inhalte/oeffnungszeiten/) |
+| **Contact details** | Adresse, Telefon, E-Mail, Social Media und Betreiberangaben | [Kontakt](/inhalte/kontakt/) |
+
+Die Abschnitte **Menu**, **Opening hours** und **Contact details** zeigen Inhalte an, die du an einer zentralen Stelle pflegst. Im Abschnitt selbst legst du nur Überschrift und Anzeigeoptionen fest. Änderst du zum Beispiel die Öffnungszeiten, sind sie überall aktuell, wo der Abschnitt verwendet wird.
+
+## Einen Abschnitt hinzufügen
+
+<Steps>
+
+1. Öffne die Seite und scroll zu **Sections**.
+
+2. Klick unter der Liste auf **Add item** und wähle die Abschnittsart.
+
+   <Screenshot name="studio-abschnitt-hinzufuegen" alt="Auswahl der Abschnittsarten beim Hinzufügen" />
+
+3. Fülle den Abschnitt aus und schließe das Fenster.
+
+</Steps>
+
+## Reihenfolge ändern und löschen
+
+- **Verschieben**: Fass einen Abschnitt am Griff (die sechs Punkte links) und zieh ihn an die gewünschte Stelle.
+- **Löschen oder duplizieren**: Klick rechts am Abschnitt auf die drei Punkte und wähle **Remove** oder **Duplicate**.
+
+## Text und Callout bearbeiten
+
+Im Feld **Content** schreibst du wie in einem einfachen Textprogramm:
+
+- **Absatzformat**: Über die Auswahl links in der Werkzeugleiste wählst du **Normal**, **Heading 2** (Zwischenüberschrift) oder **Heading 3** (kleinere Überschrift).
+- **Fett und kursiv**: Text markieren und das passende Symbol anklicken.
+- **Link**: Text markieren, auf das Link-Symbol klicken und die Adresse eintragen.
+- **Bild einfügen**: Über das Plus in der Werkzeugleiste **Image (shared)** wählen und ein Bild auswählen oder hochladen. Siehe [Bilder](/inhalte/bilder/).
+
+Beim **Callout section** gibt es zusätzlich ein Feld **Title** für die Überschrift des Kastens.
+
+<Aside type="tip">
+	Nutze **Heading 2** für Zwischenüberschriften statt fett geschriebenem Text. Das sieht einheitlicher aus und hilft Google, die Seite zu verstehen.
+</Aside>
+
+## Speisekarte, Öffnungszeiten und Kontakt einbinden
+
+- **Menu**: Unter **Categories** kannst du einzelne Kategorien auswählen. Bleibt das Feld leer, wird die ganze Speisekarte angezeigt.
+- **Opening hours**: Mit **Show exceptions** legst du fest, ob Feiertage und Urlaub mit angezeigt werden.
+- **Contact details**: Mit **Show map link** legst du fest, ob ein Link zur Karte angezeigt wird.
+
+<Aside type="note" title="Was nicht geht">
+	Neue Abschnittsarten (zum Beispiel eine Bildergalerie, ein Reservierungsformular oder eine Veranstaltungsliste) und Änderungen am Aussehen eines Abschnitts kannst du nicht selbst anlegen. Das ist Entwicklungsarbeit, siehe [Änderungswunsch](/zusammenarbeit/aenderungswunsch/).
+</Aside>

@@ -1,0 +1,28 @@
+---
+title: Im Content Studio anmelden
+description: So meldest du dich im Content Studio an.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+import Screenshot from '~/components/Screenshot.astro';
+import { project } from '~/project.config';
+
+<Steps>
+
+1. Öffne <a href={project.studioUrl}>{project.studioUrl}</a> im Browser. Am besten legst du dir ein Lesezeichen an.
+
+2. Wähle die Anmeldemethode, mit der dein Zugang eingerichtet wurde (zum Beispiel Google oder E-Mail und Passwort).
+
+   <Screenshot name="studio-login" alt="Anmeldeseite des Content Studios" />
+
+3. Nach der Anmeldung siehst du die Startansicht des Content Studios.
+
+</Steps>
+
+<Aside title="Noch kein Zugang?">
+	Die Zugänge richtet {project.developer.name} ein. Wenn du einen weiteren Zugang brauchst, zum Beispiel für Mitarbeitende, schreib eine kurze Nachricht mit Name und E-Mail-Adresse an {project.developer.email}.
+</Aside>
+
+## Funktioniert auf dem Handy
+
+Das Content Studio läuft auch auf Tablet und Smartphone. Für größere Änderungen ist ein Computer aber angenehmer.

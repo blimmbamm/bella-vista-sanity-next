@@ -1,0 +1,77 @@
+---
+title: Seiten bearbeiten und anlegen
+description: Seiten der Website bearbeiten, neu anlegen und die Adresse festlegen.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+import Screenshot from '~/components/Screenshot.astro';
+import { project } from '~/project.config';
+
+Jede Seite der Website, zum Beispiel die Startseite oder „Über uns“, ist im Content Studio ein eigener Eintrag unter **Pages**. Eine Seite gibt es pro Sprache einmal: Die deutsche und die englische Startseite sind zwei Einträge, die miteinander verknüpft sind.
+
+Unter **Pages** findest du zwei Listen:
+
+- **Homepages**: nur die Startseiten (je eine pro Sprache).
+- **All pages**: alle Seiten, sortiert nach Sprache und Titel.
+
+<Screenshot name="studio-seiten-liste" alt="Liste aller Seiten im Content Studio" />
+
+## Eine Seite bearbeiten
+
+<Steps>
+
+1. Öffne **Pages → All pages** und klick auf die Seite. Unter dem Titel steht die Sprache (`de` oder `en`) und die Adresse der Seite.
+
+2. Ändere die Felder, die du anpassen möchtest. Die Inhalte der Seite stecken in den **Sections** (Abschnitten), siehe [Abschnitte](/inhalte/abschnitte/).
+
+   <Screenshot name="studio-seite-bearbeiten" alt="Formular einer Seite im Content Studio" />
+
+3. Klick auf **Publish** und danach auf [Deploy now](/veroeffentlichen/website-aktualisieren/).
+
+</Steps>
+
+## Die Felder einer Seite
+
+| Feld | Bedeutung |
+| --- | --- |
+| **Title** | Überschrift der Seite. Auf der Startseite wird stattdessen der große Einstiegsbereich gezeigt. |
+| **SEO & page title** | Optional. Text, der im Browser-Tab und bei Google angezeigt wird. Leer lassen, dann wird der Titel verwendet. |
+| **Description (for SEO)** | Optional. Kurzer Beschreibungstext für Google (etwa 140 bis 160 Zeichen). |
+| **Language** | Sprache der Seite: German oder English. |
+| **Path** | Adresse der Seite ohne Sprache, zum Beispiel `ueber-uns`. Ergibt dann {project.siteUrl}/de/ueber-uns. |
+| **Is Home** | Nur für die Startseite eingeschaltet. Die Startseite hat keinen Path. |
+| **Sections** | Die Abschnitte der Seite in der Reihenfolge, in der sie angezeigt werden. |
+
+<Aside type="caution" title="Regeln für den Path">
+	Nur Kleinbuchstaben, Ziffern und Bindestriche, keine Umlaute und keine Leerzeichen. Unterseiten trennst du mit Schrägstrich, zum Beispiel `events/weinabend`. Jeder Path darf pro Sprache nur einmal vorkommen.
+
+	Wenn du den Path einer bestehenden Seite änderst, funktionieren alte Links (zum Beispiel bei Google oder auf Flyern) nicht mehr. Pass danach auch die [Navigation](/inhalte/navigation/) an.
+</Aside>
+
+## Untertitel der Startseite
+
+Oben auf der Startseite stehen der Name des Restaurants (aus [Kontakt- und Betriebsdaten](/inhalte/kontakt/)) und darunter ein kurzer Untertitel. Den Untertitel pflegst du unter **Metadata (for SEO)**: Dort gibt es je einen Eintrag für Deutsch und Englisch, der Text steht im Feld **Description**.
+
+## Eine neue Seite anlegen
+
+<Steps>
+
+1. Öffne **Pages → All pages** und klick oben auf das Plus-Symbol (**Create new document**).
+
+2. Fülle **Title**, **Language** und **Path** aus. Lass **Is Home** ausgeschaltet.
+
+3. Füge über **Sections** die gewünschten Abschnitte hinzu.
+
+4. Klick auf **Publish**.
+
+5. Wenn die Seite auch auf Englisch existieren soll: Lege die Übersetzung an, siehe [Übersetzungen](/inhalte/uebersetzungen/).
+
+6. Nimm die Seite in die [Navigation](/inhalte/navigation/) auf, sonst finden Gäste sie nicht.
+
+7. Klick auf [Deploy now](/veroeffentlichen/website-aktualisieren/).
+
+</Steps>
+
+## Eine Seite löschen
+
+Öffne die Seite, klick unten neben **Publish** auf die drei Punkte und wähle **Delete**. Entferne die Seite vorher aus der Navigation. Löschen lässt sich nicht rückgängig machen. Wenn du unsicher bist, frag lieber kurz nach.

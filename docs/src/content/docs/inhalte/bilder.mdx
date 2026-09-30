@@ -1,0 +1,47 @@
+---
+title: Bilder
+description: Bilder hochladen, beschreiben und auf Seiten und bei Gerichten verwenden.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+import Screenshot from '~/components/Screenshot.astro';
+
+Bilder kommen an zwei Stellen vor:
+
+- **Bei einem Gericht** im Feld **Image**. Das Bild gehört fest zu diesem Gericht.
+- **In einem Text- oder Callout-Abschnitt** als **Image (shared)**. Diese Bilder liegen zentral unter **Image** in der Inhaltsliste. Dadurch kannst du dasselbe Bild auf der deutschen und englischen Seite verwenden und musst es nur einmal austauschen.
+
+<Screenshot name="studio-bilder" alt="Liste der Bilder im Content Studio" />
+
+## Ein Bild in einen Text einfügen
+
+<Steps>
+
+1. Öffne die Seite und den Text- oder Callout-Abschnitt.
+
+2. Setze den Cursor an die Stelle, an der das Bild erscheinen soll.
+
+3. Klick in der Werkzeugleiste auf das Plus und wähle **Image (shared)**.
+
+4. Wähle ein vorhandenes Bild aus oder klick auf **Create new**, um ein neues hochzuladen.
+
+5. Bei einem neuen Bild: Gib einen **Title** (nur für dich, zum Wiederfinden) ein, lade die Datei hoch und fülle **Accessibility description** aus. Optional kannst du eine **Caption** (Bildunterschrift) eintragen.
+
+6. Veröffentliche das Bild und die Seite, dann [Deploy now](/veroeffentlichen/website-aktualisieren/).
+
+</Steps>
+
+## Bildausschnitt bei Gerichten festlegen
+
+Bei Bildern von Gerichten kannst du nach dem Hochladen auf das Bild klicken und den wichtigsten Bereich markieren (**Hotspot**). Die Website achtet dann darauf, dass dieser Bereich immer sichtbar bleibt, auch wenn das Bild zugeschnitten wird.
+
+## Tipps für gute Bilder
+
+- **Format**: JPG für Fotos, PNG nur für Grafiken mit Transparenz.
+- **Größe**: mindestens 1600 Pixel breit, höchstens etwa 10 MB. Die Website verkleinert die Bilder automatisch für Handy und Computer.
+- **Rechte**: Verwende nur eigene Fotos oder Bilder, für die du die Nutzungsrechte hast.
+- **Beschreibung**: Fülle **Accessibility description** immer aus, zum Beispiel „Pasta mit Tomatensoße und Basilikum“. Das hilft Menschen mit Sehbehinderung und Google.
+
+<Aside type="caution">
+	Ein Bild unter **Image** zu löschen, entfernt es von allen Seiten, auf denen es verwendet wird. Das Studio warnt dich, wenn das Bild noch verwendet wird.
+</Aside>

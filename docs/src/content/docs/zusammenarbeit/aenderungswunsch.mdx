@@ -1,0 +1,25 @@
+---
+title: Änderungswunsch oder Problem melden
+description: So meldest du Wünsche und Fehler, damit sie schnell erledigt werden können.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import { project } from '~/project.config';
+
+Für alles, was du nicht selbst im Content Studio erledigen kannst, wende dich an {project.developer.name}:
+
+- **E-Mail**: <a href={`mailto:${project.developer.email}`}>{project.developer.email}</a>
+- **Telefon**: <a href={`tel:${project.developer.phone.replace(/\s/g, '')}`}>{project.developer.phone}</a>
+
+## Was in die Nachricht gehört
+
+Je genauer die Beschreibung, desto schneller geht es:
+
+1. **Was möchtest du?** Zum Beispiel „Ich möchte eine Seite mit unseren Veranstaltungen, auf der ich Termine selbst eintragen kann.“
+2. **Wo?** Link zur betroffenen Seite der Website oder Name des Eintrags im Content Studio.
+3. **Bis wann?** Gibt es einen Termin, zum Beispiel eine Saisoneröffnung?
+4. **Bei Fehlern**: Was hast du gemacht, was ist passiert, was hättest du erwartet? Ein Screenshot hilft sehr.
+
+<Aside type="tip">
+	Screenshot erstellen: Unter Windows mit **Windows + Umschalt + S**, am Mac mit **Cmd + Umschalt + 4**, am Handy meist mit **Ein/Aus + Leiser** gleichzeitig.
+</Aside>

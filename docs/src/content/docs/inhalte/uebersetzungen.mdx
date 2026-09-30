@@ -1,0 +1,48 @@
+---
+title: Übersetzungen (Deutsch und Englisch)
+description: Welche Inhalte du pro Sprache pflegst und wie du eine Seite übersetzt.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+import Screenshot from '~/components/Screenshot.astro';
+import { project } from '~/project.config';
+
+Die Website gibt es auf Deutsch und Englisch. Gäste wechseln die Sprache im Menü der Website. Je nach Inhalt funktioniert die Übersetzung im Content Studio auf eine von zwei Arten.
+
+## Getrennte Einträge pro Sprache
+
+**Seiten** und **Navigation** gibt es pro Sprache einmal. Die deutsche und die englische Version sind getrennte Einträge, die du einzeln bearbeitest und veröffentlichst. Dadurch kann die englische Seite auch kürzer sein oder andere Abschnitte haben.
+
+## Ein Eintrag mit Feldern für beide Sprachen
+
+**Speisekarte**, **Öffnungszeiten**, **Bilder** und die **Hinweistexte** darin pflegst du nur einmal. Jedes Textfeld hat darin zwei Eingabefelder, eines für Deutsch und eines für Englisch. Preise, Zeiten und Fotos musst du dadurch nur einmal ändern.
+
+Ist das englische Feld leer, zeigt die englische Website den deutschen Text an.
+
+**Kontakt- und Betriebsdaten** gelten für beide Sprachen gleich und haben keine Übersetzung.
+
+## Eine Seite übersetzen
+
+<Steps>
+
+1. Öffne die deutsche Seite.
+
+2. Klick oben im Formular auf **Translations**. Du siehst, welche Sprachen es für diese Seite schon gibt.
+
+   <Screenshot name="studio-uebersetzungen" alt="Übersetzungsmenü einer Seite im Content Studio" />
+
+3. Klick auf **English**. Das Studio legt die englische Seite an und verknüpft sie mit der deutschen.
+
+4. Übersetze Titel und Abschnitte und trage einen englischen **Path** ein, zum Beispiel `about-us` statt `ueber-uns`.
+
+5. **Publish**, dann die Seite in der englischen [Navigation](/inhalte/navigation/) eintragen und [Deploy now](/veroeffentlichen/website-aktualisieren/).
+
+</Steps>
+
+<Aside type="tip">
+	Durch die Verknüpfung springt der Sprachwechsel auf der Website direkt zur passenden Seite in der anderen Sprache. Ohne Verknüpfung landen Gäste auf der Startseite der anderen Sprache.
+</Aside>
+
+<Aside type="note" title="Was nicht geht">
+	Weitere Sprachen, zum Beispiel Italienisch oder Französisch, kannst du nicht selbst hinzufügen. Das richtet {project.developer.name} bei Bedarf ein, siehe [Änderungswunsch](/zusammenarbeit/aenderungswunsch/).
+</Aside>

@@ -1,0 +1,336 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  height: var(--header-height);
+  background: rgb(250 246 239 / 88%);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-line);
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.header[data-open] {
+  background: var(--color-bg);
+  border-bottom-color: transparent;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.brand {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 3vw, 1.4rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menuButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.menuButton:hover {
+  border-color: var(--color-ink-muted);
+}
+
+.menuIcon {
+  position: relative;
+  display: block;
+  width: 1.15rem;
+  height: 0.8rem;
+}
+
+.menuIcon span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition:
+    transform 0.3s ease,
+    opacity 0.2s ease,
+    top 0.3s ease;
+}
+
+.menuIcon span:nth-child(1) {
+  top: 0;
+}
+
+.menuIcon span:nth-child(2) {
+  top: calc(50% - 1px);
+}
+
+.menuIcon span:nth-child(3) {
+  top: calc(100% - 2px);
+}
+
+.header[data-open] .menuIcon span:nth-child(1) {
+  top: calc(50% - 1px);
+  transform: rotate(45deg);
+}
+
+.header[data-open] .menuIcon span:nth-child(2) {
+  opacity: 0;
+}
+
+.header[data-open] .menuIcon span:nth-child(3) {
+  top: calc(50% - 1px);
+  transform: rotate(-45deg);
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgb(31 42 29 / 45%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.backdrop[data-open] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  max-height: 100dvh;
+  padding-top: var(--header-height);
+  overflow-y: auto;
+  background: var(--color-bg);
+  border-bottom: 3px solid var(--color-accent);
+  box-shadow: 0 24px 48px rgb(31 42 29 / 18%);
+  transform: translateY(-100%);
+  visibility: hidden;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.4s;
+}
+
+.drawer[data-open] {
+  transform: translateY(0);
+  visibility: visible;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s;
+}
+
+.drawerInner {
+  display: grid;
+  gap: 2rem;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 1.5rem var(--gutter) 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .drawerInner {
+    grid-template-columns: 1fr minmax(16rem, 20rem);
+    align-items: start;
+    padding-top: 2.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+.list {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  opacity: 0;
+  transform: translateY(-0.5rem);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.drawer[data-open] .item {
+  opacity: 1;
+  transform: none;
+}
+
+.drawer[data-open] .list > .item:nth-child(2) {
+  transition-delay: 0.05s;
+}
+
+.drawer[data-open] .list > .item:nth-child(3) {
+  transition-delay: 0.1s;
+}
+
+.drawer[data-open] .list > .item:nth-child(n + 4) {
+  transition-delay: 0.15s;
+}
+
+.link,
+.groupLabel {
+  display: inline-block;
+  padding: 0.25rem 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.2rem;
+  width: 100%;
+  height: 2px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.link:hover,
+.link[aria-current="page"] {
+  color: var(--color-accent);
+}
+
+.link:hover::after,
+.link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.groupLabel {
+  margin-top: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.subList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.subList .item {
+  opacity: 1;
+  transform: none;
+}
+
+.subLink {
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.subLink:hover,
+.subLink[aria-current="page"] {
+  color: var(--color-accent);
+}
+
+.info {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  background: var(--color-surface-muted);
+}
+
+.infoText {
+  margin: 0;
+  color: var(--color-ink-muted);
+}
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  border-radius: 1.75rem;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.cta:hover {
+  background: var(--color-accent-strong);
+}
+
+.ctaPhone {
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.languages {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.language {
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: var(--color-surface);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.language:hover {
+  border-color: var(--color-ink-muted);
+}
+
+.language[aria-current="true"] {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-bg);
+}

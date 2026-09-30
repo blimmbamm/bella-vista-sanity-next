@@ -1,0 +1,38 @@
+.wrapper {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: clamp(4rem, 12vw, 8rem) var(--gutter);
+  text-align: center;
+}
+
+.code {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 15vw, 7rem);
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.title {
+  margin: 1rem 0 0.25rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.subtitle {
+  margin: 0 0 2rem;
+  color: var(--color-ink-muted);
+}
+
+.link {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.link:hover {
+  background: var(--color-accent-strong);
+}

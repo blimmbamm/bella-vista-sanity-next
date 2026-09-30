@@ -1,0 +1,90 @@
+---
+title: Speisekarte pflegen
+description: Kategorien und Gerichte anlegen, Preise ändern, Gerichte ausblenden und sortieren.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+import Screenshot from '~/components/Screenshot.astro';
+
+Die Speisekarte besteht aus **Kategorien** (zum Beispiel Vorspeisen, Hauptgerichte, Getränke) und **Gerichten**. Jedes Gericht gehört zu genau einer Kategorie. Die Speisekarte pflegst du einmal für beide Sprachen: Jedes Textfeld hat ein Feld für Deutsch und eines für Englisch.
+
+Unter **Menu** findest du drei Listen:
+
+- **Categories**: alle Kategorien.
+- **Dishes by category**: erst Kategorie wählen, dann siehst du nur deren Gerichte. Das ist der bequemste Weg.
+- **All dishes**: alle Gerichte auf einen Blick.
+
+<Screenshot name="studio-speisekarte" alt="Bereich Menu im Content Studio" />
+
+## Ein Gericht hinzufügen
+
+<Steps>
+
+1. Öffne **Menu → Dishes by category** und wähle die Kategorie.
+
+   <Screenshot name="studio-gerichte-nach-kategorie" alt="Gerichte einer Kategorie im Content Studio" />
+
+2. Klick oben auf das Plus-Symbol. Die Kategorie ist schon eingetragen.
+
+3. Fülle das Formular aus (siehe unten). Pflicht sind der deutsche Name und ein Preis oder mindestens eine Variante.
+
+   <Screenshot name="studio-gericht-bearbeiten" alt="Formular eines Gerichts im Content Studio" />
+
+4. Klick auf **Publish** und danach auf [Deploy now](/veroeffentlichen/website-aktualisieren/).
+
+</Steps>
+
+## Die Felder eines Gerichts
+
+| Feld | Bedeutung |
+| --- | --- |
+| **Name** | Name des Gerichts, Deutsch (Pflicht) und Englisch. |
+| **Description** | Optional. Beschreibung oder Zutaten, Deutsch und Englisch. |
+| **Category** | Kategorie, in der das Gericht erscheint. |
+| **Image** | Optional. Foto des Gerichts. Mit **Accessibility description** beschreibst du das Bild kurz für Menschen, die es nicht sehen können. |
+| **Price (EUR)** | Preis in Euro, zum Beispiel `12.50`. Wird ignoriert, wenn Varianten eingetragen sind. |
+| **Variants** | Optional. Verschiedene Größen oder Portionen mit eigenem Preis, zum Beispiel „0,3 l“ und „0,5 l“. |
+| **Available** | Ausschalten, um das Gericht auf der Website auszublenden, ohne es zu löschen. |
+| **Sort order** | Reihenfolge innerhalb der Kategorie. Kleinere Zahlen stehen weiter oben. |
+
+<Aside type="tip" title="Englische Übersetzung vergessen?">
+	Wenn das englische Feld leer ist, zeigt die englische Website den deutschen Text an. Es fehlt also nichts, es steht dann nur auf Deutsch da.
+</Aside>
+
+## Preis ändern
+
+Öffne das Gericht, ändere **Price (EUR)** oder die Preise unter **Variants**, dann **Publish** und **Deploy now**. Als Dezimaltrennzeichen verwendest du einen Punkt (`9.90`), die Website zeigt den Preis dann korrekt als „9,90 €“ an.
+
+## Gericht vorübergehend ausblenden
+
+Zum Beispiel, wenn ein Saisongericht gerade nicht verfügbar ist: Schalte **Available** aus, veröffentliche und deploye. Das Gericht bleibt im Content Studio erhalten und du kannst es später einfach wieder einschalten. In der Liste steht bei ausgeblendeten Gerichten „hidden“.
+
+## Reihenfolge festlegen
+
+Die Reihenfolge von Kategorien und Gerichten bestimmst du über das Feld **Sort order**. Kleinere Zahlen stehen weiter oben.
+
+<Aside type="tip">
+	Nummeriere in Zehnerschritten (10, 20, 30 …). Dann kannst du später ein Gericht dazwischen schieben (zum Beispiel mit 15), ohne alle anderen ändern zu müssen.
+</Aside>
+
+## Kategorien verwalten
+
+<Steps>
+
+1. Öffne **Menu → Categories**.
+
+   <Screenshot name="studio-kategorien" alt="Liste der Speisekarten-Kategorien" />
+
+2. Klick auf eine Kategorie, um sie zu bearbeiten, oder oben auf das Plus-Symbol für eine neue.
+
+3. Trage **Title** (Deutsch ist Pflicht), optional eine **Description** und die **Sort order** ein.
+
+4. **Publish** und [Deploy now](/veroeffentlichen/website-aktualisieren/).
+
+</Steps>
+
+Eine Kategorie kannst du erst löschen, wenn keine Gerichte mehr darin sind. Verschiebe die Gerichte vorher in eine andere Kategorie oder lösche sie.
+
+## So sieht es auf der Website aus
+
+<Screenshot name="web-speisekarte" alt="Speisekarte auf der Website" />

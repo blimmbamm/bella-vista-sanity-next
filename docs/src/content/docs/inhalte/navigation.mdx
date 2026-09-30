@@ -1,0 +1,54 @@
+---
+title: Navigation
+description: Das Menü der Website bearbeiten, Einträge hinzufügen, sortieren und verschachteln.
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+import Screenshot from '~/components/Screenshot.astro';
+import { project } from '~/project.config';
+
+Die Navigation ist das Menü, das Gäste über das Menü-Symbol oben rechts auf der Website öffnen. Es gibt sie je einmal für Deutsch und Englisch.
+
+<Screenshot name="web-navigation" alt="Geöffnetes Menü auf der Website" />
+
+## Navigation bearbeiten
+
+<Steps>
+
+1. Öffne **Main Navigation** und wähle **German** oder **English**.
+
+   <Screenshot name="studio-navigation" alt="Navigation im Content Studio" />
+
+2. Unter **Navigation items** siehst du die Einträge in der Reihenfolge, in der sie auf der Website erscheinen.
+
+3. Klick auf **Add item**, um einen neuen Eintrag hinzuzufügen, oder auf einen bestehenden, um ihn zu bearbeiten.
+
+4. Zum Umsortieren fasst du einen Eintrag am Griff links und ziehst ihn an die gewünschte Stelle.
+
+5. **Publish** und [Deploy now](/veroeffentlichen/website-aktualisieren/).
+
+</Steps>
+
+Vergiss nicht, die andere Sprache ebenfalls anzupassen.
+
+## Die Felder eines Eintrags
+
+| Feld | Bedeutung |
+| --- | --- |
+| **Label** | Text, der im Menü steht. |
+| **Link → Link type** | **Internal page** für eine Seite deiner Website oder **External URL** für eine andere Website. |
+| **Link → Page** | Bei internen Links: die Seite. Zur Auswahl stehen nur Seiten in der Sprache dieser Navigation. |
+| **Link → Hash / anchor** | Optional. Springt direkt zu einer Stelle auf der Seite. Nur verwenden, wenn {project.developer.name} dir einen Sprungpunkt genannt hat, sonst leer lassen. |
+| **Link → URL** | Bei externen Links: die vollständige Adresse, zum Beispiel `https://www.instagram.com/…`. Auch `tel:` und `mailto:` sind möglich. |
+| **Link → Open in new tab** | Öffnet den Link in einem neuen Browser-Tab. Sinnvoll für externe Links. |
+| **Child items** | Optional. Untereinträge, die unter diesem Eintrag erscheinen. |
+
+## Untermenüs
+
+Über **Child items** kannst du Einträge verschachteln, zum Beispiel „Speisekarte“ mit den Untereinträgen „Mittagstisch“ und „Abendkarte“. Möglich sind bis zu drei Ebenen.
+
+Lässt du bei einem Eintrag den **Link** leer, wird er zur reinen Überschrift für seine Untereinträge.
+
+<Aside type="note">
+	Eine neue Seite erscheint nicht automatisch im Menü. Nach dem Anlegen einer Seite musst du sie hier selbst eintragen.
+</Aside>

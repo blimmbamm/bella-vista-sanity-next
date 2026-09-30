@@ -1,0 +1,185 @@
+- eine doku page, wie hosten? 
+- Doku soll Workflows in sanity zeigen, am besten mit Screenshots
+- kann man da irgendein framework nutzen?
+- doku soll auch zeigen, was nutzer selbst machen und was ich als entwickler machen
+- einen skill bauen, der durch die Erstellung eines neuen Projekts auf Basis des Templates führt
+- e2e tests: wie einbauen und wann laufen sie
+- wie hält man das repo und die app sauber, vor allem bzgl. Vulnerabilities?
+- sanity dataset: production soll deployed sein, development für mich. Funktionalität einbauen um dev und prod zu syncen
+- deployment: wie viel kann man schon vorab, also template-seitig aufsetzen?
+- eine neue app auf basis des templates bauen zum Showcasing der Template-Examples
+- vorher natürlich: noch ein paar mehr examples
+- probleme im docs Projekt
+- sanity studio links im docs Projekt
+- e2e tests aus docs projekt in eigenes sub-projekt machen
+- wie ist das aktuell mit prod/dev dataset?
+
+
+==========================================================================
+RECAP (Stand 27.09.2026)
+==========================================================================
+
+Ziel des Projekts: Auf Basis des Templates eine Beispiel-Website + Sanity CMS
+bauen, um zu bewerten, wie gut das Template taugt. Umgesetzt als fiktives
+italienisches Restaurant "Trattoria Bella Vista" (DE + EN).
+Aufbau: cms/ (Sanity Studio), web/ (Next.js), docs/ (Astro Starlight).
+
+
+--- 1. Sanity-Schema umgebaut (23.09.) ---------------------------------------
+- Entscheidungen: DE + EN bleiben, der Page-Builder (Seiten mit Sections) bleibt.
+- Entfernt: Quote-, Two-Column-, Galerie- und Video-Sections sowie die
+  zugehörigen Medien-Dokumente (video, videoRef, gallery, sharedGallery ...).
+- Neue Dokumenttypen:
+  - menuCategory (Titel, Beschreibung, Sortierung)
+  - dish (Name, Beschreibung, Preis oder Varianten wie Größen, Bild, Kategorie,
+    "verfügbar"-Schalter). Preis ist nur Pflicht, wenn keine Varianten gepflegt sind.
+  - openingHours (Singleton): Wochentage mit mehreren Zeitfenstern, Ausnahmen
+    wie Feiertage, Notiz. Zeiten über Mitternacht bzw. bis 24:00 sind erlaubt.
+  - siteSettings (Singleton): Name, Adresse, Telefon, E-Mail, USt-IdNr.,
+    Kartenlink, Social Links.
+- Neue Sections: menuSection, openingHoursSection, contactSection. Sie
+  verweisen nur auf die geteilten Daten, speichern selbst nichts. Dadurch
+  bleiben DE- und EN-Seite automatisch synchron.
+- Studio-Struktur (structure.ts): Ordner "Menu" mit "Speisen nach Kategorie"
+  (neues Gericht bekommt die Kategorie automatisch), Singletons fest verdrahtet.
+- Typegen geklärt: läuft nur aus cms/ mit "npm run typegen" (Konfig in
+  cms/sanity.cli.ts, schreibt nach web/src/sanity/types.ts).
+  Veraltete Dateien web/sanity-typegen.json und cms/_schema.json gelöscht.
+
+--- 2. Beispieldaten im development-Dataset (23.09., über Sanity MCP) --------
+- development-Dataset angelegt (erster Versuch scheiterte am Dataset-Limit
+  des Tarifs) und befüllt; alles veröffentlicht, keine offenen Entwürfe.
+- 5 Kategorien, 18 Gerichte (14 mit Foto, Getränke ohne Bild), Varianten für
+  Pizza/Gelato/Wasser/Wein, Risotto als "nicht verfügbar" zum Testen.
+- Bilder: CC0 / Public Domain (rawpixel, StockSnap, Flickr, Wikimedia), jedes
+  per Vorschau geprüft. Zwei aussortierte Bilder liegen ungenutzt im Dataset.
+- Öffnungszeiten inkl. Ausnahmen, Kontaktdaten, 8 Seiten (Start, Speisekarte,
+  Kontakt, Impressum je DE/EN) mit Übersetzungsverknüpfung, Navigation DE/EN
+  mit Untermenü "Mehr", SEO-Metadaten je Sprache.
+
+--- 3. Next.js-Website umgesetzt (27.09. vormittags) --------------------------
+- Header mit Hamburger-Button, Drawer fährt von oben rein (alle Bildschirm-
+  größen). Enthält Navigation inkl. Untermenüs, Adresse, "Tisch reservieren"
+  und DE/EN-Umschalter, der auf die übersetzte Seite springt.
+  Schließt per Linkklick, Escape oder Klick daneben; Scroll-Sperre, Tastatur-
+  zugänglichkeit berücksichtigt.
+- Startseite mit dunklem Hero (Name, Adresse, Beschreibung, Buttons
+  "Tisch reservieren" und "Anfahrt"), Unterseiten mit zentrierter Überschrift.
+- Speisekarte als Karten-Raster mit Bildern, Preisen, Varianten, Sprunglinks
+  zu Kategorien; nicht verfügbare Gerichte werden ausgeblendet.
+- Öffnungszeiten fassen gleiche Tage zusammen ("Di – Do"), Ausnahmen werden
+  angezeigt. Kontakt als Karten. Footer, eigene 404-Seite.
+- Design: Playfair Display + Nunito, Creme/Terrakotta, dezente Tricolore-Streifen.
+  UI-Texte DE/EN in web/i18n/dictionary.ts.
+- Geprüft mit tsc, ESLint, next build und im Browser (Desktop + 390 px mobil).
+- Alte Template-Komponenten gelöscht (Quote, Galerie, Video, Carousel ...).
+
+--- 4. Vollständig statisches Rendering (27.09.) ------------------------------
+- Problem: Unterseiten wurden beim Build nicht vorgerendert, obwohl
+  generateStaticParams alle 8 Pfade lieferte.
+- Ursache: [lang] enthält das Root-Layout und ist in Next 16 ein "Root Param".
+- Fix: app/[lang]/layout.tsx liefert die Sprachen per generateStaticParams,
+  die Seite liefert pro Sprache nur noch die Slugs. Jetzt sind alle 8
+  CMS-Seiten statisches HTML. Nur "/" bleibt bewusst dynamisch (Weiterleitung
+  anhand der Browsersprache).
+
+--- 5. Clean-up (27.09.) ------------------------------------------------------
+- Ungenutzte Pakete entfernt (embla-carousel-react, lucide-react),
+  ungenutzte Bilder aus web/public gelöscht.
+- Query-Fragmente ohne groq-Tag, dadurch keine "never"-Typen mehr in types.ts.
+- READMEs in web/ und cms/ projektbezogen neu geschrieben,
+  .env.example korrigiert, Root-.gitignore aufgeräumt.
+
+--- 6. Deployment-Analyse (27.09., nur Beratung, nichts umgesetzt) ------------
+- Etwa 80 % lassen sich per Code/Skript vorbereiten.
+- Vercel: Root Directory = web, Env-Variablen getrennt (Production ->
+  Dataset production, Preview -> development), Subdomain per CNAME,
+  optional Staging-Subdomain an einen Branch gebunden.
+- Content-Updates: Seiten sind statisch, also braucht es entweder einen
+  Vercel Deploy Hook + Sanity Webhook oder eine Revalidate-Route im Code.
+- Manuell bleiben: Accounts, GitHub-Verknüpfung, DNS, echte Secrets.
+- Empfehlung: Checkliste + kleines Setup-Skript (Vercel- und Sanity-CLI),
+  Terraform erst bei vielen Kundenprojekten.
+
+--- 7. Doku-Seite für den Restaurantbetreiber (27.09. nachmittags) ------------
+- Framework: Astro Starlight (Markdown, deutsche Oberfläche, eingebaute Suche,
+  statischer Build). Alternativen (Docusaurus, VitePress, Nextra, GitBook,
+  Mintlify) verglichen und verworfen.
+- Liegt in docs/, lokal startbar (Port 4321), 18 Seiten:
+  Erste Schritte, Inhalte pflegen (Seiten, Abschnitte, Speisekarte,
+  Öffnungszeiten, Kontakt, Navigation, Bilder, Übersetzungen), Veröffentlichen
+  (Entwurf, Publish, Deploy-Button), Zusammenarbeit (was der Betreiber macht,
+  was der Entwickler macht, Änderungswünsche), Probleme lösen.
+- Projektspezifische Werte (Name, URLs, Kontakt, Deploy-Dauer) nur in
+  docs/src/project.config.ts, die Seiten selbst bleiben allgemein.
+- Screenshots automatisch per Playwright (docs/screenshots/, docs/playwright.config.ts):
+  21 Bilder (16 Studio, 5 Website). Studio-Login per API-Token aus docs/.env
+  (Vorlage in docs/.env.example), das Skript schließt Sanity-Einblendungen
+  selbst. Befehle: npm run screenshots / screenshots:studio / screenshots:web.
+- Konzept für E2E-Tests besprochen: Playwright aus docs/ in eigenes Unterprojekt
+  e2e/ ziehen (gemeinsame Helfer + Login, Screenshots und Tests als getrennte
+  Projekte). Noch nicht umgesetzt.
+
+
+==========================================================================
+NÄCHSTE SCHRITTE
+==========================================================================
+
+A) Grundlagen, sollten zuerst passieren
+1. Ersten Git-Commit machen und ein Remote anlegen. Das Repo hat bisher
+   keinen einzigen Commit. Vorher prüfen, dass keine .env-Datei mitgeht.
+2. Hängendes "sanity schema extract" (Teil von npm run typegen) untersuchen.
+   Wird bei jeder Schema-Änderung gebraucht.
+3. Klären, auf welchem Dataset das lokale Studio wirklich läuft: cms/.env und
+   web/.env zeigen auf development, die Bild-URLs in den Studio-Screenshots
+   deuteten aber auf production.
+4. Schema deployen (sanity schema deploy), damit Tools wie der Sanity MCP
+   gegen das echte Schema validieren können.
+
+B) Datasets und Deployment (aus den bisherigen Todos)
+5. production = live, development = eigenes Arbeits-Dataset festziehen und
+   eine Sync-Funktion bauen (prod -> dev gibt es als Skript sync:prod-to-dev,
+   prüfen ob es funktioniert; dev -> prod fehlt noch).
+6. Website auf Vercel deployen (Root Directory web, Env-Variablen je Umgebung,
+   Subdomain).
+7. Content-Updates automatisieren: Deploy Hook + Sanity Webhook, oder eine
+   Revalidate-Route im Template. Prüfen, ob das Deploy-Tool im Studio dazu passt.
+8. Studio deployen (npm run deploy in cms/).
+9. Template-seitig vorbereiten: vollständige .env.example, Setup-Skript für
+   Vercel/Sanity-CLI, Deployment-Checkliste als Doku-Seite.
+10. Doku hosten (zunächst öffentlich auf Vercel, später pro Kunde absichern,
+    z. B. mit Cloudflare Access).
+
+C) Doku
+11. "Probleme im docs Projekt" konkretisieren und beheben.
+12. Sanity-Studio-Links in der Doku: echte Studio-URL eintragen und im Studio
+    ein "Hilfe"-Tool anlegen, das auf die Doku verlinkt.
+13. Platzhalter in docs/src/project.config.ts ersetzen (URLs, Kontaktdaten,
+    Deploy-Dauer).
+
+D) Tests und Qualität
+14. Playwright aus docs/ in ein eigenes Unterprojekt e2e/ ziehen.
+15. Erste E2E-Tests für die Website: Startseite DE/EN lädt, Sprachwechsel,
+    Drawer, Speisekarte, ausgeblendete Gerichte fehlen. Laufen lassen gegen
+    den statischen Build (next build && next start), in CI bei jedem PR.
+16. Umgang mit Vulnerabilities festlegen: npm audit, Dependabot oder Renovate
+    (braucht Remote-Repo), regelmäßige Updates.
+
+E) Kleinere Aufräumarbeiten / Entscheidungen
+17. Section-Titel "Speisekarte" im CMS leeren (steht doppelt auf der Seite).
+18. Navigationsfeld "Hash / anchor" ist wirkungslos, weil Sections keine id
+    haben: entweder ids einbauen oder das Feld entfernen.
+19. Dokumenttyp "Metadata (for SEO)" umbenennen oder erklären; seine
+    Beschreibung ist der Untertitel auf der Startseite.
+20. Optional: dynamicParams = false, damit unbekannte URLs sofort 404 sind
+    (neue Seiten erscheinen dann erst nach neuem Build).
+21. Ungenutzte Variablen in cms/.env entfernen (SANITY_API_TOKEN,
+    OPENAI_API_KEY, TRANSLATE_MODE), @sanity/export prüfen, zwei ungenutzte
+    Bilder im Dataset löschen.
+22. Screenshot-Token hat Editor-Rechte: prüfen, ob eine schwächere Rolle reicht.
+
+F) Template weiterentwickeln (aus den bisherigen Todos)
+23. Weitere Examples auf Basis des Templates bauen.
+24. Showcase-App bauen, die die Template-Examples präsentiert.
+25. Skill bauen, der durch die Erstellung eines neuen Projekts aus dem
+    Template führt (kann Setup-Skript und Checkliste aus Punkt 9 nutzen).

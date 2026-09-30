@@ -1,0 +1,19 @@
+.header {
+  padding: clamp(3rem, 8vw, 5rem) var(--gutter) clamp(1rem, 3vw, 1.5rem);
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: clamp(2.25rem, 7vw, 3.5rem);
+}
+
+.header h1::before {
+  content: "";
+  display: block;
+  width: 4.5rem;
+  height: 4px;
+  margin: 0 auto 1.25rem;
+  border-radius: 4px;
+  background: linear-gradient(to right, #3f7d3a 0 33.3%, var(--color-line) 33.3% 66.6%, var(--color-accent) 66.6%);
+}

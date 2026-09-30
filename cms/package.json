@@ -1,0 +1,52 @@
+{
+  "name": "cms",
+  "private": true,
+  "version": "1.0.0",
+  "main": "package.json",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "sanity dev",
+    "start": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "deploy-graphql": "sanity graphql deploy",
+    "typegen": "sanity schema extract && sanity typegen generate",
+    "sync:prod-to-dev": "sanity dataset export production tmp.tar.gz && sanity dataset import tmp.tar.gz development --replace"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/document-internationalization": "^6.2.33",
+    "@sanity/export": "^6.0.5",
+    "@sanity/vision": "^5.31.2",
+    "react": "^19.1",
+    "react-dom": "^19.1",
+    "sanity": "^5.31.2",
+    "styled-components": "^6.1.18"
+  },
+  "overrides": {
+    "adm-zip": "^0.6.0",
+    "esbuild": "^0.28.1",
+    "js-yaml": "^3.15.1",
+    "typeid-js": {
+      "uuid": "^11.1.1"
+    }
+  },
+  "devDependencies": {
+    "@sanity/eslint-config-studio": "^5.0.2",
+    "@types/react": "^19.1",
+    "eslint": "^9.28",
+    "prettier": "^3.5",
+    "typescript": "^5.8"
+  },
+  "prettier": {
+    "semi": false,
+    "printWidth": 100,
+    "bracketSpacing": false,
+    "singleQuote": true
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}

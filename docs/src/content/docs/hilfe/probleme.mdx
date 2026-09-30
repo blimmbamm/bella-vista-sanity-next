@@ -1,0 +1,50 @@
+---
+title: Probleme lösen
+description: Lösungen für häufige Probleme und Fehlermeldungen im Content Studio.
+---
+
+import { project } from '~/project.config';
+
+## Meine Änderung ist nicht auf der Website
+
+Geh diese Punkte der Reihe nach durch:
+
+1. **Veröffentlicht?** Öffne den Eintrag im Content Studio. Steht dort noch ein Entwurf mit dem Knopf **Publish**, klick darauf.
+2. **Deployt?** Klick auf **Deploy Website → Deploy now** und warte etwa {project.deployDuration}.
+3. **Browser-Zwischenspeicher?** Lade die Website neu: am Computer mit Strg + F5, auf dem Handy durch Herunterziehen. Oder öffne sie in einem privaten Fenster.
+4. **Richtige Sprache?** Prüfe, ob du die Änderung auf der deutschen oder englischen Seite gemacht hast und dir die passende Sprache ansiehst.
+5. **Gericht ausgeblendet?** Prüfe, ob bei dem Gericht **Available** eingeschaltet ist.
+6. **Neue Seite nicht im Menü?** Neue Seiten müssen in die [Navigation](/inhalte/navigation/) eingetragen werden.
+
+Hilft das alles nicht, melde dich bei {project.developer.name}.
+
+## Ich kann nicht veröffentlichen
+
+Der Knopf **Publish** ist ausgegraut, wenn im Formular ein Fehler ist. Fehlerhafte Felder sind rot markiert, und oben im Formular zeigt ein Symbol die Anzahl der Fehler an. Klick darauf, um direkt zum Feld zu springen.
+
+## Häufige Fehlermeldungen
+
+| Meldung | Bedeutung und Lösung |
+| --- | --- |
+| **Required** | Pflichtfeld ist leer. Bitte ausfüllen. |
+| **German text is required** / **German title is required** | Das deutsche Feld muss ausgefüllt sein. Englisch ist optional. |
+| **Set a price or add variants** | Das Gericht braucht einen Preis oder mindestens eine Variante mit Preis. |
+| **Use the format HH:MM** | Uhrzeit bitte mit Doppelpunkt und zwei Stellen eingeben, zum Beispiel `09:30`. |
+| **Add at least one time slot or mark as closed** | Für den Tag fehlen Öffnungszeiten. Zeiten eintragen oder **Closed** einschalten. |
+| **Each weekday may only appear once** | Ein Wochentag ist doppelt eingetragen. Einen davon entfernen. |
+| **Non-home pages must have a path** | Die Seite braucht einen **Path**, zum Beispiel `ueber-uns`. |
+| **Home page must not have a path** | Bei der Startseite muss **Path** leer sein. |
+| **Path must use lowercase letters, numbers, hyphens, and slashes only** | Keine Großbuchstaben, Umlaute, Leerzeichen oder Sonderzeichen im Path. Aus „Über uns“ wird `ueber-uns`. |
+| **Path must be unique for this language** | Es gibt schon eine Seite mit diesem Path in dieser Sprache. Anderen Path wählen. |
+| **Street, postal code and city are required** | Die Adresse ist unvollständig. |
+| **Select a page for internal links** | Beim Navigationseintrag fehlt die Seite. |
+| **Enter a URL for external links** | Beim Navigationseintrag fehlt die Adresse. |
+| **Navigation can be at most 3 levels deep** | Das Menü ist zu tief verschachtelt. Höchstens drei Ebenen sind möglich. |
+
+## Ich finde einen Eintrag nicht
+
+Nutze die Suche oben links im Content Studio (Lupen-Symbol oder Strg + K). Sie durchsucht alle Inhalte.
+
+## Ich habe versehentlich etwas gelöscht oder überschrieben
+
+Überschriebene Inhalte kannst du über die **History** wiederherstellen, siehe [Entwurf und Veröffentlichen](/veroeffentlichen/entwurf/#eine-frühere-version-wiederherstellen). Bei gelöschten Einträgen melde dich bei {project.developer.name}, oft lassen sie sich retten.
