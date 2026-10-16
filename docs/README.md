@@ -11,6 +11,10 @@ npm run dev
 
 Open [http://localhost:4321](http://localhost:4321).
 
+## Deploy (Cloudflare Pages)
+
+Production deploys run on Cloudflare Pages from Git (`Root Directory` = `docs`, output `dist`).
+
 ## Per-project values
 
 Restaurant name, URLs, deploy duration and developer contact live in `src/project.config.ts`. Pages read them from there, so the page content stays generic when the template is reused.

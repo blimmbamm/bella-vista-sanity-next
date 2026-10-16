@@ -10,7 +10,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). The root URL redirects to `/de` or `/en` based on the browser language.
+Open [http://localhost:3000](http://localhost:3000). The root URL redirects to `/de` (default language).
 
 ## Environment variables
 
@@ -39,4 +39,8 @@ npx sanity typegen generate
 
 ## Static build
 
-`npm run build` prerenders all CMS pages as static HTML. The languages come from `generateStaticParams` in `app/[lang]/layout.tsx`, the page paths from `generateStaticParams` in the page. New or changed content only appears after a new build, e.g. triggered by the deploy tool in the Studio.
+`npm run build` writes a fully static site to `out/` (`output: "export"`). The languages come from `generateStaticParams` in `app/[lang]/layout.tsx`, the page paths from `generateStaticParams` in the page. New or changed content only appears after a new build, e.g. triggered by the deploy tool in the Studio.
+
+## Deploy (Cloudflare Pages)
+
+Production deploys run on Cloudflare Pages from Git (`Root Directory` = `web`, output `out`). Set `NEXT_PUBLIC_*` as plain project environment variables (Production + Preview). Content updates trigger a rebuild via the Studio deploy hook.

@@ -7,7 +7,7 @@ export default function NotFound() {
       <p className={styles.code}>404</p>
       <h1 className={styles.title}>Diese Seite gibt es leider nicht.</h1>
       <p className={styles.subtitle}>This page does not exist.</p>
-      <Link href="/" className={styles.link}>
+      <Link href="/de" className={styles.link}>
         Startseite · Home
       </Link>
     </div>

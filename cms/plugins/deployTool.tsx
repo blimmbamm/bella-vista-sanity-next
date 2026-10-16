@@ -52,13 +52,13 @@ export const deployTool = definePlugin({
 
             {status === 'error' && <Text>❌ Failed to trigger deployment</Text>}
 
-            {status !== 'idle' && (
+            {status !== 'idle' && process.env.SANITY_STUDIO_DEPLOY_DASHBOARD_URL && (
               <Link
-                href={process.env.SANITY_STUDIO_VERCEL_LINK}
+                href={process.env.SANITY_STUDIO_DEPLOY_DASHBOARD_URL}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                View progress on Vercel →
+                View progress on Cloudflare →
               </Link>
             )}
           </Card>
