@@ -13,12 +13,7 @@ Open [http://localhost:4321](http://localhost:4321).
 
 ## Deploy (Cloudflare Pages)
 
-```bash
-npm run build
-npm run deploy
-```
-
-Uploads `dist/` to the Pages project named in `wrangler.toml`.
+Production deploys run on Cloudflare Pages from Git (`Root Directory` = `docs`, output `dist`).
 
 ## Per-project values
 

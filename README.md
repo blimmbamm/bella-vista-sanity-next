@@ -56,7 +56,7 @@ cd cms && npm run sync:prod-to-dev
 
 ## Deploy (overview)
 
-- **Website / docs** — separate Cloudflare Pages projects; deploy with Wrangler from `web/` and `docs/` (`npm run deploy`)
+- **Website / docs** — separate Cloudflare Pages projects, Git-connected (root `web` / `docs`)
 - **Studio** — `cd cms && npm run deploy` (Sanity hosting)
 - **Content updates** — Studio “Deploy Website” button triggers a Cloudflare Pages deploy hook (static rebuild)
 

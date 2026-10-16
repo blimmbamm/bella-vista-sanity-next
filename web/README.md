@@ -43,9 +43,4 @@ npx sanity typegen generate
 
 ## Deploy (Cloudflare Pages)
 
-```bash
-npm run build
-npm run deploy
-```
-
-Uses Wrangler to upload `out/` to the Pages project named in `wrangler.toml`. Production builds should use the `production` Sanity dataset (`NEXT_PUBLIC_SANITY_DATASET=production`).
+Production deploys run on Cloudflare Pages from Git (`Root Directory` = `web`, output `out`). Set `NEXT_PUBLIC_*` as plain project environment variables (Production + Preview). Content updates trigger a rebuild via the Studio deploy hook.

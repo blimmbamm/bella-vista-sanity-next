@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "npx --yes serve out -p 3000",
-    "lint": "eslint",
-    "deploy": "wrangler pages deploy out --project-name=bella-vista-web"
+    "lint": "eslint"
   },
   "dependencies": {
     "@sanity/image-url": "^2.0.2",
@@ -23,8 +22,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9.28",
     "eslint-config-next": "^16.3.2",
-    "typescript": "^5",
-    "wrangler": "^4.151.1"
+    "typescript": "^5"
   },
   "overrides": {
     "adm-zip": "^0.6.0",
