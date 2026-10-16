@@ -8,6 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "deploy": "wrangler pages deploy dist --project-name=bella-vista-docs",
     "screenshots": "playwright test --project=studio --project=web",
     "screenshots:studio": "playwright test --project=studio",
     "screenshots:web": "playwright test --project=web"
@@ -21,6 +22,7 @@
     "esbuild": true
   },
   "devDependencies": {
-    "@playwright/test": "^1.63.0"
+    "@playwright/test": "^1.63.0",
+    "wrangler": "^4.151.1"
   }
 }

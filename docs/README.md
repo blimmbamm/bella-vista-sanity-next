@@ -11,6 +11,15 @@ npm run dev
 
 Open [http://localhost:4321](http://localhost:4321).
 
+## Deploy (Cloudflare Pages)
+
+```bash
+npm run build
+npm run deploy
+```
+
+Uploads `dist/` to the Pages project named in `wrangler.toml`.
+
 ## Per-project values
 
 Restaurant name, URLs, deploy duration and developer contact live in `src/project.config.ts`. Pages read them from there, so the page content stays generic when the template is reused.

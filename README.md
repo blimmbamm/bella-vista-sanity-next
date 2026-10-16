@@ -4,7 +4,8 @@ Example restaurant website built to exercise a Sanity + Next.js template: biling
 
 Live:
 
-- Website: [bella-vista-tau-six.vercel.app](https://bella-vista-tau-six.vercel.app/de)
+- Website: [bella-vista-web.pages.dev](https://bella-vista-web.pages.dev/de)
+- Docs: [bella-vista-docs.pages.dev](https://bella-vista-docs.pages.dev/)
 - Studio: [trattoria-bella-vista.sanity.studio](https://trattoria-bella-vista.sanity.studio)
 
 ## Repository layout
@@ -44,7 +45,7 @@ npm run typegen
 
 ## Content & datasets
 
-- **`development`** — local work, Vercel previews, E2E, docs screenshots
+- **`development`** — local work, preview builds, E2E, docs screenshots
 - **`production`** — live website and deployed Studio
 
 Copy production into development when you want a fresh local mirror:
@@ -55,9 +56,9 @@ cd cms && npm run sync:prod-to-dev
 
 ## Deploy (overview)
 
-- **Website / docs** — separate Vercel projects from this repo (`Root Directory` = `web` or `docs`)
+- **Website / docs** — separate Cloudflare Pages projects; deploy with Wrangler from `web/` and `docs/` (`npm run deploy`)
 - **Studio** — `cd cms && npm run deploy` (Sanity hosting)
-- **Content updates** — Studio “Deploy Website” button triggers a Vercel deploy hook (static rebuild)
+- **Content updates** — Studio “Deploy Website” button triggers a Cloudflare Pages deploy hook (static rebuild)
 
 Details live in the package READMEs and in `docs/src/project.config.ts` (URLs, contacts for the operator guide).
 

@@ -4,7 +4,7 @@
  */
 export const project = {
 	restaurantName: 'Trattoria Bella Vista',
-	siteUrl: 'https://bella-vista-tau-six.vercel.app/de',
+	siteUrl: 'https://bella-vista-web.pages.dev/de',
 	studioUrl: 'https://trattoria-bella-vista.sanity.studio',
   studioTitle: 'Content Studio',
   deployDuration: 'zwei bis fünf Minuten',
