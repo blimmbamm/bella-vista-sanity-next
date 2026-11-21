@@ -13,7 +13,7 @@
     "screenshots:web": "playwright test --project=web"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.42.4",
+    "@astrojs/starlight": "^0.43.0",
     "astro": "^7.2.10",
     "sharp": "^0.35.3"
   },
